@@ -67,7 +67,7 @@ This is the code from before I fixed the program:
 
 The reason why this doesn't work is because the reverseInPlace method switches the elements around in the array but it changes the first half of the elements before changing the second half of the elements so the second half remains the same. 
 
-This is the code of the program after I addressed the bugs.
+This is the code of the program after I addressed the bugs:
 ```
 static void reverseInPlace(int[] arr) {
     for(int i = 0; i < arr.length/2; i += 1) {
@@ -80,3 +80,6 @@ static void reverseInPlace(int[] arr) {
   
 For the reverseInPlace method I made the for loop stop at half the length of the array, and I made a temp variable that will store the element before it gets changed. Then I changed the second half of the array at the specific index to be the temp value. This addresses the issue because the first half of the elements will not get replaced by the back half before we store the values of the first half of the array. Now, the first and last elemnt of the array will be changed at the same time with the help of the temp variable.
 
+**Part 3**
+---
+In the lab in week 2, I think I learned a lot of new things about servers and how I can write code that can implement the changes I want by changing the path of the url. I didn't know how easy it could be to deploy a server and make changes to it before so it was super cool learning how to change the URL of the server and get different results on the page by the changes made from the URL. I learned how to breakdown the path into different parts and find the query to implement the requests that I want to make by the changes I made to the URL. Overall, I think I really enjoyed the lab about servers and I think I learned a lot of new information that will be useful for me in the future.
