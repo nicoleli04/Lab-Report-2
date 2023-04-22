@@ -51,7 +51,7 @@ This is a test given that does not induce a failure:
     int[] input1 = { 3 };
     ArrayExamples.reverseInPlace(input1);
     assertArrayEquals(new int[]{ 3 }, input1);
-	}
+  }
 ```
 
 This is the symptom of the code:
@@ -59,24 +59,26 @@ This is the symptom of the code:
 
 This is the code from before I fixed the program: 
 
-```static void reverseInPlace(int[] arr) {
+```
+static void reverseInPlace(int[] arr) {
     for(int i = 0; i < arr.length; i += 1) {
       arr[i] = arr[arr.length - i - 1];
     }
-  } 
+} 
 ```
 
 The reason why this doesn't work is because the reverseInPlace method switches the elements around in the array but it changes the first half of the elements before changing the second half of the elements so the second half remains the same. 
 
 This is the code of the program after I addressed the bugs:
 
-```static void reverseInPlace(int[] arr) {
+```
+static void reverseInPlace(int[] arr) {
     for(int i = 0; i < arr.length/2; i += 1) {
       int temp = arr[i];
       arr[i] = arr[arr.length - i - 1];
       arr[arr.length-i-1] = temp;
     }
-  }
+}
 ```
   
 For the reverseInPlace method I made the for loop stop at half the length of the array, and I made a temp variable that will store the element before it gets changed. Then I changed the second half of the array at the specific index to be the temp value. This addresses the issue because the first half of the elements will not get replaced by the back half before we store the values of the first half of the array. Now, the first and last elemnt of the array will be changed at the same time with the help of the temp variable.
