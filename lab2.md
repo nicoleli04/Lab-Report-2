@@ -64,7 +64,6 @@ This is the code from before I fixed the program:
       arr[i] = arr[arr.length - i - 1];
     }
   }
-```
 
 The reason why this doesn't work is because the reverseInPlace method switches the elements around in the array but it changes the first half of the elements before changing the second half of the elements so the second half remains the same. 
 
