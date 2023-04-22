@@ -47,7 +47,7 @@ Here is a failure inducing test that I tried for this buggy program.
 This is a test given that does not induce a failure: 
 
 ``` @Test 
-	public void testReverseInPlace() {
+  public void testReverseInPlace() {
     int[] input1 = { 3 };
     ArrayExamples.reverseInPlace(input1);
     assertArrayEquals(new int[]{ 3 }, input1);
@@ -58,6 +58,7 @@ This is the symptom of the code:
 ![Image](Screenshot 2023-04-22 135523.png)
 
 This is the code from before I fixed the program: 
+
 ```static void reverseInPlace(int[] arr) {
     for(int i = 0; i < arr.length; i += 1) {
       arr[i] = arr[arr.length - i - 1];
