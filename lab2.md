@@ -23,5 +23,16 @@ Here is an example of me trying to add `Hello` to the server by adding `/add-mes
 
 ![Image](Screenshot 2023-04-22 131944.png)
 
-Going through the code again with this `/add-message?s=Hello` added to the url, I first created a string `s` that had nothing stored. I then used the method `url.getPath().contains("/add-message")` to see if the URL contains the `add-message` query. Seeing that it does contains `add-message` query, I made an array called parameters that splits the query with the `=` using `url.getQuery().split("=")`. So the parameters array should have `s` at index 0 and `Hello` at index 1. Then I checked if the element at the index 0 is `s`, which is true. Then I update the string `s` to  concatenant `Hello`, then adding new line `\n` so the new string `s` would be `Hello\n". Then, I returned the new string `s` so that it would be shown on the live server as Hello.
+Going through the code again with this `/add-message?s=Hello` added to the url, I first created a string `s` that had nothing stored. I then used the method `url.getPath().contains("/add-message")` to see if the URL contains the `add-message` query. Seeing that it does contains `add-message` query, I made an array called parameters that splits the query with the `=` using `url.getQuery().split("=")`. So the parameters array should have `s` at index 0 and `Hello` at index 1. Then I checked if the element at the index 0 is `s`, which is true. Then I update the string `s` to  concatenant `Hello`, then adding new line `\n` so the new string `s` would be `Hello\n`. Then, I returned the new string `s` so that it would be shown on the live server as Hello.
+
+Now I am trying to add another message onto the server by adding `/add-message?s=How%Are%You` to the url:
+
+![Image](Screenshot 2023-04-22 133042.png)
+
+Addind `/add-message?s=How%Are%You` will go thorugh the exact same steps as adding `/add-message?s=Hello` to the url, so I will not repeat myself again with the entire process. However, I will point out a slight difference between these two which causes both of the messages to appear on the server. This is because from before by adding `/add-message?s=Hello` to the url, we noted that the string `s` would be `Hello\n`. So at the start, instead of being empty, the string `s` would be `Hello\n`. This means that when we concatenate `How%Are%You` and `\n` the string s would be `Hello\nHow%Are%You\n`, which is why the server shows both `Hello` and `How Are You`.
+
+**Part 2**
+---
+
+
 
