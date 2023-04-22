@@ -33,6 +33,45 @@ Addind `/add-message?s=How%Are%You` will go thorugh the exact same steps as addi
 
 **Part 2**
 ---
+I am going to be addressing the bug in the reverseInPlace() method from lab 3.
 
+Here is a failure inducing test that I tried for this buggy program. 
+ `@Test
+  public void testReverseInPlace2(){
+    int[] input2 = {5,6,7,8};
+    int[] input3 = {8,7,6,5};
+    ArrayExamples.reverseInPlace(input2);
+    assertArrayEquals(input3, input2);
+  }
+ `
+This is a test given that does not induce a failure: 
 
+` @Test 
+	public void testReverseInPlace() {
+    int[] input1 = { 3 };
+    ArrayExamples.reverseInPlace(input1);
+    assertArrayEquals(new int[]{ 3 }, input1);
+	}`
+
+This is the symptom of the code:
+![Image](Screenshot 2023-04-22 135523.png)
+
+This is the code from before I fixed the program: 
+`static void reverseInPlace(int[] arr) {
+    for(int i = 0; i < arr.length; i += 1) {
+      arr[i] = arr[arr.length - i - 1];
+    }
+  }`
+The reason why this doesn't work is because the reverseInPlace method switches the elements around in the array but it changes the first half of the elements before changing the second half of the elements so the second half remains the same. 
+
+This is the code of the program after I addressed the bugs.
+` static void reverseInPlace(int[] arr) {
+    for(int i = 0; i < arr.length/2; i += 1) {
+      int temp = arr[i];
+      arr[i] = arr[arr.length - i - 1];
+      arr[arr.length-i-1] = temp;
+    }
+  }`
+  
+For the reverseInPlace method I made the for loop stop at half the length of the array, and I made a temp variable that will store the element before it gets changed. Then I changed the second half of the array at the specific index to be the temp value. This addresses the issue because the first half of the elements will not get replaced by the back half before we store the values of the first half of the array. Now, the first and last elemnt of the array will be changed at the same time with the help of the temp variable.
 
